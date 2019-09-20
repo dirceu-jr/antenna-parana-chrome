@@ -12,7 +12,7 @@ Satélite meteorológico: <a href="https://pt.wikipedia.org/wiki/GOES_16" target
 
 # Captura de tela
 
-![Captura de tela](https://github.com/dirceup/meteorologia-parana-chrome/blob/master/teste-com.gif)
+![Captura de tela](https://github.com/dirceup/meteorologia-parana-chrome/blob/master/captura-de-tela.gif)
 
 # Instale
 
