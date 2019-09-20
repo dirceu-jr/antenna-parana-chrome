@@ -1,4 +1,4 @@
-# Atalho para Informações Meteorológicas do Paraná :sunny: :umbrella: :cloud:
+# Atalho para Informações Meteorológicas do Paraná :umbrella:
 
 Extensão para o navegador Google Chrome com informações metereológicas do Paraná.
 
