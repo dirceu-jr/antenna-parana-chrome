@@ -31,6 +31,10 @@ Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
 # A fazer
 
 - [ ] Salvar última cidade visualizada
-- [ ] Modelos Numéricos
+- [ ] Modelos Numéricos - Precipitação
+- [ ] Modelos Numéricos - Vento
+- [ ] Modelos Numéricos - Temperatura
 - [ ] Animação Radar
 - [ ] Animação Satélite
+- [ ] Animação Modelos Numéricos
+- [ ] Reutilizar para Android Auto
