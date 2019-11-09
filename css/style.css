@@ -307,9 +307,13 @@ h2.cidade {
 }
 
 .prevFlex h3 {
-    margin-right: 6px !important;
-    margin-left: 6px !important;
+    margin-right: 5px !important;
+    margin-left: 5px !important;
     font-size: 1em;
+}
+
+.prev-data i {
+    margin-right: 5px;
 }
 
 .prevFlex {
