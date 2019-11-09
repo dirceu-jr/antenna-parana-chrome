@@ -15,6 +15,7 @@
         "128": "icon128.png"
     },
     "permissions": [
-        "http://www.simepar.br/"
+        "http://www.simepar.br/",
+        "storage"
     ]
 }

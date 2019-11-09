@@ -30,7 +30,7 @@ Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
 
 # A fazer
 
-- [ ] Salvar última cidade visualizada
+- [x] Salvar última cidade visualizada
 - [ ] Modelos Numéricos - Precipitação
 - [ ] Modelos Numéricos - Vento
 - [ ] Modelos Numéricos - Temperatura

@@ -1,4 +1,16 @@
+// Código em Português para incentivar o aprendizado
+
 var 
+    cidades = [
+        'cidade_curitiba',
+        'cidade_londrina',
+        'cidade_maringa',
+        'cidade_pg',
+        'cidade_cascavel',
+        'cidade_foz',
+        'cidade_guarapuava',
+        'cidade_paranagua'
+    ],
     imagem,
     mapa
 ;
@@ -32,7 +44,7 @@ function inicializa() {
         pagina_raios = 'http://www.simepar.br/prognozweb/simepar/raios_simepar'
     ;
 
-    getCondicoes();
+    xhrCondicoes();
 
     link_radar.addEventListener('click', function() {
         evento_click_imagem(imagem_radar, pagina_radar);
@@ -61,32 +73,49 @@ function inicializa() {
     mapa.fitBounds(limites);
 }
 
-function parseCondicoes(responseText) {
+function muda_para_cidade(essa) {
+    var this_condicao = cidades.indexOf(essa);
+
+    // salva na BD key/value do Chrome
+    chrome.storage.sync.set({"ultima_cidade": essa});
+
+    // itera escondendo as outras cidades
+    var sliders = document.querySelectorAll('#condicoes .da-slider');
+    for (slider in sliders) {
+        if (typeof(sliders[slider]) == 'object') {
+            sliders[slider].style.display = 'none';
+        }
+    }
+    
+    // usa o número da cidade para exibir as condições dela
+    document.querySelector('#condicoes .da-slider:nth-child(' + (this_condicao + 1) + ')').style.display = 'block';
+}
+
+function analisaCondicoes(responseText) {
     document.getElementById('condicoes').innerHTML = responseText.replace("<a ", "<a target='_blank'");
-            
-    var cidades = ['cidade_curitiba', 'cidade_londrina', 'cidade_maringa', 'cidade_pg', 'cidade_cascavel', 'cidade_foz', 'cidade_guarapuava', 'cidade_paranagua'];
+
     for (cidade in cidades) {
         document.getElementById(cidades[cidade]).addEventListener('click', function() {
-            var sliders = document.querySelectorAll('#condicoes .da-slider');
-            for (slider in sliders) {
-                if (typeof(sliders[slider]) == 'object') {
-                    sliders[slider].style.display = 'none';
-                }
-            }
-            
-            var this_condicao = cidades.indexOf(this.getAttribute('id'));
-            document.querySelector('#condicoes .da-slider:nth-child(' + (this_condicao + 1) + ')').style.display = 'block';
+            muda_para_cidade(this.id);
         });
     }
 
+    // 
     document.querySelector('#cond-rajada i').className = "wi wi-sandstorm";
+
+    chrome.storage.sync.get(['ultima_cidade'], function(result) {
+        if (result.ultima_cidade) {
+            muda_para_cidade(result.ultima_cidade);
+        }
+    });
 }
 
-function getCondicoes() {
+// xhr é acronimo de XMLHttpRequest (conhecido como AJAX)
+function xhrCondicoes() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            parseCondicoes(xhr.responseText);
+            analisaCondicoes(xhr.responseText);
         }
     }
     xhr.open('GET', 'http://www.simepar.br/prognozweb/simepar/location_code_county?_=' + Date.now(), true);
