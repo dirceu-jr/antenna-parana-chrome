@@ -80,29 +80,6 @@ function parseCondicoes(responseText) {
     }
 
     document.querySelector('#cond-rajada i').className = "wi wi-sandstorm";
-
-    // var
-    //     minimas_rotulos = document.querySelectorAll('#ww-temp-2 > span.txt_mm'),
-    //     minimas = document.querySelectorAll('#ww-temp-2 > span.de-prox-tem-min'),
-    //     rotulos = document.querySelectorAll('#day')
-    // ;
-
-    // for (rotulo in rotulos) {
-    //     var
-    //         minima = minimas[rotulo].innerHTML,
-    //         minima_rotulo = minimas_rotulos[rotulo].innerHTML
-    //     ;
-
-    //     if (minimas_rotulos[rotulo].parentNode) {
-    //         minimas_rotulos[rotulo].parentNode.removeChild(minimas_rotulos[rotulo]);
-    //     }
-
-    //     if (minimas[rotulo].parentNode) {
-    //         minimas[rotulo].parentNode.removeChild(minimas[rotulo]);
-    //     }
-
-    //     rotulos[rotulo].innerHTML += '<span>' + minima_rotulo + '</span><b>' + minima + '</b>';
-    // }
 }
 
 function getCondicoes() {
