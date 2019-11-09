@@ -251,7 +251,7 @@ div.col-md-6.dados-prox-dias > div > div > div:nth-child(2) {
 }
 
 #modelo {
-    display: none;
+    /* display: none; */
 }
 
 .cond h4 {

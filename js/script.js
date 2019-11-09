@@ -12,62 +12,96 @@ var
         'cidade_paranagua'
     ],
     imagem,
-    mapa
+    mapa,
+    limites = [[0,0], [413, 780]]
 ;
 
-function imagem_url(tipo) {
-    var tempo_agora = Date.now();
-    return simepar_url + tipo + '.jpeg?' + tempo_agora;
+function tempo_agora() {
+    return Date.now();
 }
 
-function evento_click_imagem(tipo, pagina) {
+function imagem_url(tipo) {
+    return simepar_url + tipo + '.jpeg?' + tempo_agora();
+}
+
+function modelo_url(tipo) {
+    return simepar_modelos_url + tipo + '.png?' + tempo_agora();
+}
+
+function evento_click_imagem(tipo) {
     imagem.setUrl(imagem_url(tipo));
     mapa.setZoom(0);
+    mapa.fitBounds(limites);
 }
 
-function evento_click_modelo() {
-    
+function evento_click_modelo(tipo) {
+    imagem.setUrl(modelo_url(tipo));
+    mapa.setZoom(0);
+    mapa.fitBounds(limites);
 }
+
+// http://www.simepar.br/riak/pgw-home-products/radar_parana_1.jpeg
 
 function inicializa() {
     var
         link_radar = document.getElementById('link_radar'),
         link_satelite = document.getElementById('link_satelite'),
         link_raios = document.getElementById('link_raios'),
-        // link_raios = document.getElementById('link_modelo'),
+        link_modelo_precipitacao = document.getElementById('link_modelo_precipitacao'),
+        link_modelo_vento = document.getElementById('link_modelo_vento'),
+        link_modelo_temperatura = document.getElementById('link_modelo_temperatura'),
+
         imagem_radar = 'radar_parana_1',
         imagem_satelite = 'satelite_amsul_1'
         imagem_raios = 'raios_parana_1',
+
+        modelo_chuva = 'chuva6h_1',
+        modelo_vento = 'rajada_lc_1',
+        modelo_temperatura = 'temperatura_2m_1',
+
         simepar_url = 'http://www.simepar.br/riak/pgw-home-products/',
+        simepar_modelos_url = 'http://www.simepar.br/riak/modelos_site/',
+        
         pagina_radar = 'http://www.simepar.br/prognozweb/simepar/radar_msc',
         pagina_satelite = 'http://www.simepar.br/prognozweb/simepar/satelite_goes',
-        pagina_raios = 'http://www.simepar.br/prognozweb/simepar/raios_simepar'
+        pagina_raios = 'http://www.simepar.br/prognozweb/simepar/raios_simepar',
+        pagina_modelos = 'http://www.simepar.br/prognozweb/simepar/modelos_numericos'
     ;
+
+    // /riak/modelos_site/chuva6h_6.png
+    // http://www.simepar.br/riak/modelos_site/chuva6h_27.png?1573266263
 
     xhrCondicoes();
 
     link_radar.addEventListener('click', function() {
-        evento_click_imagem(imagem_radar, pagina_radar);
+        evento_click_imagem(imagem_radar);
     });
     
     link_satelite.addEventListener('click', function() {
-        evento_click_imagem(imagem_satelite, pagina_satelite);
+        evento_click_imagem(imagem_satelite);
     });
     
     link_raios.addEventListener('click', function() {
-        evento_click_imagem(imagem_raios, pagina_raios);
+        evento_click_imagem(imagem_raios);
     });
 
-    // link_modelo.addEventListener('click', function() {
-    //     evento_click_modelo();
-    // });
+    link_modelo_precipitacao.addEventListener('click', function() {
+        evento_click_modelo(modelo_chuva);
+    });
+
+    link_modelo_vento.addEventListener('click', function() {
+        evento_click_modelo(modelo_vento);
+    });
+
+    link_modelo_temperatura.addEventListener('click', function() {
+        evento_click_modelo(modelo_temperatura);
+    });
     
     mapa = L.map('mapa', {
         crs: L.CRS.Simple,
         attributionControl: false
     });
     
-    var limites = [[0,0], [413, 780]];
     imagem = L.imageOverlay(imagem_url(imagem_radar), limites).addTo(mapa);
     
     mapa.fitBounds(limites);

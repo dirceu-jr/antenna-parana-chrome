@@ -31,9 +31,9 @@ Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
 # A fazer
 
 - [x] Salvar última cidade visualizada
-- [ ] Modelos Numéricos - Precipitação
-- [ ] Modelos Numéricos - Vento
-- [ ] Modelos Numéricos - Temperatura
+- [x] Modelos Numéricos - Precipitação
+- [x] Modelos Numéricos - Vento
+- [x] Modelos Numéricos - Temperatura
 - [ ] Animação Radar
 - [ ] Animação Satélite
 - [ ] Animação Modelos Numéricos
