@@ -98,13 +98,16 @@ function inicializa() {
         crs: L.CRS.Simple,
         maxZoom: 3
     });
+
+    // adicionar target _blank no link de atribuição para o Leaflet
+    mapa.attributionControl.setPrefix('<a href="http://leafletjs.com" target="_blank">Leaflet</a>');
     
     // inicializa o componente imageOverlay no leaflet
     imagem = L.imageOverlay(
         imagem_url(imagem_radar),
         limites,
         {
-            attribution: '<a href=\'http://www.simepar.br/\'>SIMEPAR<\/a>'
+            attribution: '<a target="_blank" href="http://www.simepar.br/">SIMEPAR<\/a>'
         }
     ).addTo(mapa);
 
@@ -113,7 +116,8 @@ function inicializa() {
 
 
     // adiciona botões para navegação
-
+    // próximo
+    
 }
 
 function mudaParaCidade(essa) {
