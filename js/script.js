@@ -106,7 +106,7 @@ function muda_para_cidade(essa) {
     var this_condicao = cidades.indexOf(essa);
 
     // salva na BD key/value do Chrome
-    chrome.storage.sync.set({"ultima_cidade": essa});
+    chrome.storage.sync.set({'ultima_cidade': essa});
 
     // itera escondendo as outras cidades
     var sliders = document.querySelectorAll('#condicoes .da-slider');
@@ -121,7 +121,7 @@ function muda_para_cidade(essa) {
 }
 
 function analisaCondicoes(responseText) {
-    document.getElementById('condicoes').innerHTML = responseText.replace("<a ", "<a target='_blank'");
+    document.getElementById('condicoes').innerHTML = responseText.replace('<a ', '<a target=\'_blank\'');
 
     for (cidade in cidades) {
         document.getElementById(cidades[cidade]).addEventListener('click', function() {
@@ -130,7 +130,7 @@ function analisaCondicoes(responseText) {
     }
 
     // 
-    document.querySelector('#cond-rajada i').className = "wi wi-sandstorm";
+    document.querySelector('#cond-rajada i').className = 'wi wi-sandstorm';
 
     chrome.storage.sync.get(['ultima_cidade'], function(result) {
         if (result.ultima_cidade) {

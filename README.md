@@ -36,6 +36,7 @@ Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
 - [x] Modelos Numéricos - Temperatura
 - [ ] Navegação Radar
 - [ ] Navegação Satélite
+- [ ] Navegação Raios
 - [ ] Navegação Modelos Numéricos
 - [ ] Animação Radar
 - [ ] Animação Satélite
