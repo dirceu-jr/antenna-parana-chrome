@@ -39,8 +39,6 @@ function evento_click(url, tipo) {
     mapa.fitBounds(limites);
 }
 
-// http://www.simepar.br/riak/pgw-home-products/radar_parana_1.jpeg
-
 function inicializa() {
     var
         link_radar = document.getElementById('link_radar'),
