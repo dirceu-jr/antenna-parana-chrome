@@ -28,14 +28,13 @@ function modelo_url(tipo) {
     return simepar_modelos_url + tipo + '.png?' + tempo_agora();
 }
 
-function evento_click_imagem(tipo) {
-    imagem.setUrl(imagem_url(tipo));
-    mapa.setZoom(0);
-    mapa.fitBounds(limites);
-}
+function evento_click(url, tipo) {
+    if (tipo == 'imagem') {
+        imagem.setUrl(imagem_url(url));
+    } else {
+        imagem.setUrl(modelo_url(url));
+    }
 
-function evento_click_modelo(tipo) {
-    imagem.setUrl(modelo_url(tipo));
     mapa.setZoom(0);
     mapa.fitBounds(limites);
 }
@@ -68,33 +67,30 @@ function inicializa() {
         pagina_modelos = 'http://www.simepar.br/prognozweb/simepar/modelos_numericos'
     ;
 
-    // /riak/modelos_site/chuva6h_6.png
-    // http://www.simepar.br/riak/modelos_site/chuva6h_27.png?1573266263
-
     xhrCondicoes();
 
     link_radar.addEventListener('click', function() {
-        evento_click_imagem(imagem_radar);
+        evento_click(imagem_radar, 'imagem');
     });
     
     link_satelite.addEventListener('click', function() {
-        evento_click_imagem(imagem_satelite);
+        evento_click(imagem_satelite, 'imagem');
     });
     
     link_raios.addEventListener('click', function() {
-        evento_click_imagem(imagem_raios);
+        evento_click(imagem_raios, 'imagem');
     });
 
     link_modelo_precipitacao.addEventListener('click', function() {
-        evento_click_modelo(modelo_chuva);
+        evento_click(modelo_chuva, 'modelo');
     });
 
     link_modelo_vento.addEventListener('click', function() {
-        evento_click_modelo(modelo_vento);
+        evento_click(modelo_vento, 'modelo');
     });
 
     link_modelo_temperatura.addEventListener('click', function() {
-        evento_click_modelo(modelo_temperatura);
+        evento_click(modelo_temperatura, 'modelo');
     });
     
     mapa = L.map('mapa', {
