@@ -65,8 +65,10 @@ function inicializa() {
         pagina_modelos = 'http://www.simepar.br/prognozweb/simepar/modelos_numericos'
     ;
 
+    // manda fazer requisição da condições
     xhrCondicoes();
 
+    // Define ações dos links de tipo de conteúdo
     link_radar.addEventListener('click', function() {
         evento_click(imagem_radar, 'imagem');
     });
@@ -91,18 +93,21 @@ function inicializa() {
         evento_click(modelo_temperatura, 'modelo');
     });
     
+    // inicializa mapa da biblioteca 'leaflet'
     mapa = L.map('mapa', {
         crs: L.CRS.Simple,
         attributionControl: false,
         maxZoom: 3
     });
     
+    // inicializa o componente imageOverlay no leaflet
     imagem = L.imageOverlay(imagem_url(imagem_radar), limites).addTo(mapa);
-    
+
+    // centraliza mapa nos limites do imageOverlay
     mapa.fitBounds(limites);
 }
 
-function muda_para_cidade(essa) {
+function mudaParaCidade(essa) {
     var this_condicao = cidades.indexOf(essa);
 
     // salva na BD key/value do Chrome
@@ -125,7 +130,7 @@ function analisaCondicoes(responseText) {
 
     for (cidade in cidades) {
         document.getElementById(cidades[cidade]).addEventListener('click', function() {
-            muda_para_cidade(this.id);
+            mudaParaCidade(this.id);
         });
     }
 
@@ -134,7 +139,7 @@ function analisaCondicoes(responseText) {
 
     chrome.storage.sync.get(['ultima_cidade'], function(result) {
         if (result.ultima_cidade) {
-            muda_para_cidade(result.ultima_cidade);
+            mudaParaCidade(result.ultima_cidade);
         }
     });
 }
