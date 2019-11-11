@@ -95,7 +95,8 @@ function inicializa() {
     
     mapa = L.map('mapa', {
         crs: L.CRS.Simple,
-        attributionControl: false
+        attributionControl: false,
+        maxZoom: 3
     });
     
     imagem = L.imageOverlay(imagem_url(imagem_radar), limites).addTo(mapa);
