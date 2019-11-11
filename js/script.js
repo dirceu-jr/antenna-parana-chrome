@@ -96,15 +96,24 @@ function inicializa() {
     // inicializa mapa da biblioteca 'leaflet'
     mapa = L.map('mapa', {
         crs: L.CRS.Simple,
-        attributionControl: false,
         maxZoom: 3
     });
     
     // inicializa o componente imageOverlay no leaflet
-    imagem = L.imageOverlay(imagem_url(imagem_radar), limites).addTo(mapa);
+    imagem = L.imageOverlay(
+        imagem_url(imagem_radar),
+        limites,
+        {
+            attribution: '<a href=\'http://www.simepar.br/\'>SIMEPAR<\/a>'
+        }
+    ).addTo(mapa);
 
     // centraliza mapa nos limites do imageOverlay
     mapa.fitBounds(limites);
+
+
+    // adiciona botões para navegação
+
 }
 
 function mudaParaCidade(essa) {
