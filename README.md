@@ -2,7 +2,7 @@
 
 Extensão para o navegador Google Chrome com informações metereológicas do Paraná.
 
-Previsão da semana, radar (precipitação), satélite e raios.
+Previsão da semana, radar (precipitação), satélite, raios, modelos numéricos (precipitação, vento e temperatura).
 
 Previsão da semana para cidades: Curitiba, Londrina, Maringá, Ponta Grossa, Cascavel, Foz do Iguaçu, Guarapuava e Paranaguá.
 
