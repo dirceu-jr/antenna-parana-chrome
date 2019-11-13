@@ -10,6 +10,8 @@ Radares: Teixeira Soares, Cascavel e Curitiba.
 
 Satélite meteorológico: <a href="https://pt.wikipedia.org/wiki/GOES_16" target="_blank">GOES-16</a>.
 
+Dados do <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>
+
 # Captura de tela
 
 ![Captura de tela](https://github.com/dirceup/meteorologia-parana-chrome/blob/master/captura-de-tela.gif)
