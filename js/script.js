@@ -29,6 +29,9 @@ function modelo_url(tipo) {
 }
 
 function evento_click(url, tipo) {
+    // define vazia para o fundo de 'carregando' aparecer
+    imagem.setUrl('');
+
     if (tipo == 'imagem') {
         imagem.setUrl(imagem_url(url));
     } else {
@@ -109,11 +112,16 @@ function inicializa() {
         {
             attribution: '<a target="_blank" href="http://www.simepar.br/">SIMEPAR<\/a>'
         }
-    ).addTo(mapa);
+    );
+
+    // adiciona a imagem 'assincronicamente'
+    // para a popup abrir mais rapido e aparecer o 'carregando'
+    setTimeout(function() {
+        imagem.addTo(mapa);
+    }, 200);
 
     // centraliza mapa nos limites do imageOverlay
     mapa.fitBounds(limites);
-
 
     // adiciona botões para navegação
     // próximo
