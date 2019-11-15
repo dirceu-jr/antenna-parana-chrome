@@ -327,7 +327,9 @@ h2.cidade {
     margin-right: 10px !important;
 }
 
-.lds-svg {
-    margin-top: -413px;
+#carregando {
+    font-size: 1.4em;
     text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
 }
