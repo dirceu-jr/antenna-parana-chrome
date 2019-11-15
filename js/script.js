@@ -51,12 +51,22 @@ function inicializa() {
         link_modelo_vento = document.getElementById('link_modelo_vento'),
         link_modelo_temperatura = document.getElementById('link_modelo_temperatura'),
 
+        // radar_parana_1 to radar_parana_8
         imagem_radar = 'radar_parana_1',
+
+        // satelite_amsul_1 to satelite_amsul_8
         imagem_satelite = 'satelite_amsul_1'
+
+        // raios_parana_1 to raios_parana_8
         imagem_raios = 'raios_parana_1',
 
-        modelo_chuva = 'chuva6h_1',
+        // chuva6h_2 to chuva6h_28
+        modelo_chuva = 'chuva6h_2',
+
+        // rajada_lc_1 to rajada_lc_28
         modelo_vento = 'rajada_lc_1',
+
+        // temperatura_2m_1 to temperatura_2m_28
         modelo_temperatura = 'temperatura_2m_1',
 
         simepar_url = 'http://www.simepar.br/riak/pgw-home-products/',
@@ -131,13 +141,13 @@ function inicializa() {
 }
 
 function adicionaBotaoAnterior() {
-    adicionaBotao(-75, 40, '&laquo;', 'Anterior', function() {
+    adicionaBotao(-75, 40, '&lang;', 'Anterior', function() {
         console.log(1);
     });
 }
 
 function adicionaBotaoProximo() {
-    adicionaBotao(-119, 72, '&raquo;', 'Próxima', function() {
+    adicionaBotao(-119, 72, '&rang;', 'Próxima', function() {
         console.log(2);
     });
 }
