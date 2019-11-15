@@ -2,13 +2,15 @@
 
 Extensão para o navegador Google Chrome com informações metereológicas do Paraná.
 
-Previsão da semana, radar (precipitação), satélite e raios.
+Previsão da semana, radar (precipitação), satélite, raios, modelos numéricos (precipitação, vento e temperatura).
 
 Previsão da semana para cidades: Curitiba, Londrina, Maringá, Ponta Grossa, Cascavel, Foz do Iguaçu, Guarapuava e Paranaguá.
 
 Radares: Teixeira Soares, Cascavel e Curitiba.
 
 Satélite meteorológico: <a href="https://pt.wikipedia.org/wiki/GOES_16" target="_blank">GOES-16</a>.
+
+Dados do <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>
 
 # Captura de tela
 
