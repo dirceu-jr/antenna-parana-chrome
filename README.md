@@ -13,7 +13,7 @@ Satélite meteorológico: <a href="https://pt.wikipedia.org/wiki/GOES_16" target
 Dados do <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>
 
 ### Obs:
-Não tenho certeza quanto a autorização de acesso dos dados fora do domínio do simepar.br. Então não vou publicar essa extensão na Chrome Web Store. Contudo a licença MIT permite o próprio SIMEPAR colaborar nesse projeto e publicar a extensão na Chrome Web Store.
+Não tenho certeza quanto a autorização de acesso aos dados fora do domínio do simepar.br. Então não vou publicar essa extensão na Chrome Web Store. Contudo a licença MIT permite o próprio SIMEPAR colaborar nesse projeto e publicar a extensão na Chrome Web Store.
 
 # Captura de tela
 
