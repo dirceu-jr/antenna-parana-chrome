@@ -125,7 +125,51 @@ function inicializa() {
 
     // adiciona botões para navegação
     // próximo
-    
+    adicionaBotaoAnterior();
+    adicionaBotaoProximo();
+    adicionaBotaoPlay();
+}
+
+function adicionaBotaoAnterior() {
+    adicionaBotao(-75, 40, '&laquo;', 'Anterior', function() {
+        console.log(1);
+    });
+}
+
+function adicionaBotaoProximo() {
+    adicionaBotao(-119, 72, '&raquo;', 'Próxima', function() {
+        console.log(2);
+    });
+}
+
+function adicionaBotaoPlay() {
+    adicionaBotao(-163, 104, '&rtrif;', 'Animação', function() {
+        console.log(3);
+    });
+}
+
+function adicionaBotao(top, left, html, title, callback) {
+    var CustomControl = L.Control.extend({
+        options: {
+            position: 'topleft'
+        },
+        onAdd: function (map) {
+            var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+            L.DomEvent.disableClickPropagation(container);
+
+            container.innerHTML = '<a href="#" role="button" title="' + title + '">' + html + '</a>';
+
+            container.style.left = left + 'px';
+            container.style.top = top + 'px';
+
+            container.onclick = function(event) {
+                return callback();
+            }
+            return container;
+        }
+    });
+
+    mapa.addControl(new CustomControl());
 }
 
 function mudaParaCidade(essa) {
