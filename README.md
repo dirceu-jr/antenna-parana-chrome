@@ -35,4 +35,4 @@ Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
 
 # A fazer
 
-[ ] - Resolver bug na ordem das imagens na navegação;
+- [ ] Resolver bug na ordem das imagens na navegação
