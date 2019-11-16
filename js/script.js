@@ -35,7 +35,7 @@ function modelo_url(tipo) {
     return simepar_modelos_url + tipo + contador + '.png?' + tempo_agora();
 }
 
-function evento_click(url, tipo) {
+function evento_click(em_branco, url, tipo) {
     // caso tiver alguma alteração no tipo de imagem e sua url
     if (url) {
         ultima_url = url;
@@ -44,8 +44,10 @@ function evento_click(url, tipo) {
         ultimo_tipo = tipo;
     }
 
-    // define vazia para o fundo de 'carregando' aparecer
-    imagem_camada.setUrl('');
+    if (em_branco) {
+        // define vazia para o fundo de 'carregando' aparecer
+        imagem_camada.setUrl('');
+    }
 
     // pode ser 'imagem' ou 'modelo
     if (ultimo_tipo == 'imagem') {
@@ -97,32 +99,32 @@ function inicializa() {
     // Define ações dos links de tipo de conteúdo
     link_radar.addEventListener('click', function() {
         contador = 8;
-        evento_click(imagem_radar, 'imagem');
+        evento_click(true, imagem_radar, 'imagem');
     });
     
     link_satelite.addEventListener('click', function() {
         contador = 8;
-        evento_click(imagem_satelite, 'imagem');
+        evento_click(true, imagem_satelite, 'imagem');
     });
     
     link_raios.addEventListener('click', function() {
         contador = 8;
-        evento_click(imagem_raios, 'imagem');
+        evento_click(true, imagem_raios, 'imagem');
     });
 
     link_modelo_precipitacao.addEventListener('click', function() {
         contador = 1;
-        evento_click(modelo_chuva, 'modelo');
+        evento_click(true, modelo_chuva, 'modelo');
     });
 
     link_modelo_vento.addEventListener('click', function() {
         contador = 1;
-        evento_click(modelo_vento, 'modelo');
+        evento_click(true, modelo_vento, 'modelo');
     });
 
     link_modelo_temperatura.addEventListener('click', function() {
         contador = 1;
-        evento_click(modelo_temperatura, 'modelo');
+        evento_click(true, modelo_temperatura, 'modelo');
     });
     
     // inicializa mapa da biblioteca 'leaflet'
@@ -183,7 +185,7 @@ function anterior() {
     if (contador < 1) {
         contador = limite_do_contador;
     }
-    evento_click();
+    evento_click(false);
 }
 
 function proximo() {
@@ -192,7 +194,7 @@ function proximo() {
         contador = 1;
     }
 
-    evento_click();
+    evento_click(false);
 }
 
 function adicionaBotaoAnterior() {
