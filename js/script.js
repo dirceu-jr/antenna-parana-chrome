@@ -224,12 +224,14 @@ function proximo() {
 
 function adicionaBotaoAnterior() {
     adicionaBotao('&lang;', 'Anterior', function() {
+        paraAnimacao();
         anterior();
     });
 }
 
 function adicionaBotaoProximo() {
     adicionaBotao('&rang;', 'Próxima', function() {
+        paraAnimacao();
         proximo();
     });
 }
