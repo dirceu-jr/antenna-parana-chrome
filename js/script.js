@@ -46,6 +46,8 @@ function evento_click(em_branco, url, tipo) {
     }
 
     if (em_branco) {
+        paraAnimacao();
+        
         // define vazia para o fundo de 'carregando' aparecer
         imagem_camada.setUrl('');
     }
@@ -254,10 +256,19 @@ function adicionaBotaoPlay() {
             }, 800);
             botao_filho.innerHTML = '&#9632;';
         } else {
-            clearInterval(animacao_intervalo);
-            botao_filho.innerHTML = '&rtrif;';
+            paraAnimacao();
         }
     });
+}
+
+function paraAnimacao() {
+    var
+        botao = document.getElementById('animacao'),
+        botao_filho = botao.childNodes[0]
+    ;
+    
+    clearInterval(animacao_intervalo);
+    botao_filho.innerHTML = '&rtrif;';
 }
 
 function adicionaBotao(html, title, callback) {
