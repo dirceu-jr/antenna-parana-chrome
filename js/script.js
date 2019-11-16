@@ -181,16 +181,42 @@ function adicionaEventosDasTeclas() {
     });
 }
 
+// na verdade aumenta o diminui (anterior ou proximo)
+// dependendo do tipo de conteudo (ultimo_tipo == 'imagem')
 function anterior() {
-    contador--;
+
+    if (ultimo_tipo == 'imagem') {
+        contador++;
+    } else {
+        contador--;
+    }
+    
+
     if (contador < 1) {
         contador = limite_do_contador;
     }
+
+    if (contador > limite_do_contador) {
+        contador = 1;
+    }
+
     evento_click(false);
 }
 
+// na verdade aumenta o diminui (anterior ou proximo)
+// dependendo do tipo de conteudo (ultimo_tipo == 'imagem')
 function proximo() {
-    contador++;
+
+    if (ultimo_tipo == 'imagem') {
+        contador--;
+    } else {
+        contador++;
+    }
+
+    if (contador < 1) {
+        contador = limite_do_contador;
+    }
+
     if (contador > limite_do_contador) {
         contador = 1;
     }
