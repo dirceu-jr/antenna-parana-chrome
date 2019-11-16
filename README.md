@@ -23,7 +23,7 @@ Não tenho certeza quanto a autorização de acesso aos dados fora do domínio d
 
 <a href="https://github.com/dirceup/meteorologia-parana-chrome/blob/master/meteorologia-parana-chrome.crx" target="_blank">Baixar</a>
 
-Depois de baixar, arraste o arquivo "meteorologia-parana-chrome.crx" para o Google Chrome e aceite a notificação na barra inferior da tela.
+Depois de baixar, arraste o arquivo "meteorologia-parana-chrome.crx" para o Google Chrome e aceite a notificação que aparecer na tela.
 
 # Créditos
 
