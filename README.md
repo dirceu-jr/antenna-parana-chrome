@@ -13,7 +13,7 @@ Satélite meteorológico: <a href="https://pt.wikipedia.org/wiki/GOES_16" target
 Dados do <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>
 
 ### Obs:
-Não tenho certeza quanto a autorização de acesso aos dados fora do domínio do simepar.br. Então não vou publicar essa extensão na Chrome Web Store.
+Não tenho certeza quanto a autorização de acesso aos dados fora do domínio do simepar.br. Então não vou publicar a extensão na Chrome Web Store.
 
 # Captura de tela
 
@@ -32,19 +32,3 @@ Dados: <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológ
 Ícones: <a href="https://erikflowers.github.io/weather-icons/" target="_blank">Weather Icons</a>
 
 Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
-
-# A fazer
-
-- [x] Salvar última cidade visualizada
-- [x] Modelos Numéricos - Precipitação
-- [x] Modelos Numéricos - Vento
-- [x] Modelos Numéricos - Temperatura
-- [x] Navegação Radar
-- [x] Navegação Satélite
-- [x] Navegação Raios
-- [x] Navegação Modelos Numéricos
-- [x] Animação Radar
-- [x] Animação Satélite
-- [x] Animação Modelos Numéricos
-- [x] Muda sentido da navegação/animação das imagens
-- [ ] Reutilizar para Android Auto
