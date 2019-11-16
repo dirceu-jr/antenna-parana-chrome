@@ -354,12 +354,11 @@ h2.cidade {
     height: 30px;
 }
 
-.contador {
+.contador,
+.contador a,
+#contador
+{
     font-size: 14px;
     text-align: center;
-    width: 44px;
-}
-
-#contador {
-    width: 44px;
+    width: 44px !important;
 }
