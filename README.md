@@ -39,10 +39,10 @@ Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
 - [x] Modelos Numéricos - Precipitação
 - [x] Modelos Numéricos - Vento
 - [x] Modelos Numéricos - Temperatura
-- [ ] Navegação Radar
-- [ ] Navegação Satélite
-- [ ] Navegação Raios
-- [ ] Navegação Modelos Numéricos
+- [x] Navegação Radar
+- [x] Navegação Satélite
+- [x] Navegação Raios
+- [x] Navegação Modelos Numéricos
 - [ ] Animação Radar
 - [ ] Animação Satélite
 - [ ] Animação Modelos Numéricos

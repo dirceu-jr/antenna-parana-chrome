@@ -353,3 +353,13 @@ h2.cidade {
     width: 30px;
     height: 30px;
 }
+
+.contador {
+    font-size: 14px;
+    text-align: center;
+    width: 44px;
+}
+
+#contador {
+    width: 44px;
+}

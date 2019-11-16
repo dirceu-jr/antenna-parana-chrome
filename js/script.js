@@ -11,9 +11,16 @@ var
         'cidade_guarapuava',
         'cidade_paranagua'
     ],
-    imagem,
+    imagem_camada,
     mapa,
-    limites = [[0,0], [413, 780]]
+    limites = [[0,0], [413, 780]],
+    contador = 8,
+    limite_do_contador = 8,
+    contador_dom,
+    simepar_url = 'http://www.simepar.br/riak/pgw-home-products/',
+    simepar_modelos_url = 'http://www.simepar.br/riak/modelos_site/',
+    ultimo_tipo = 'imagem',
+    ultima_url = 'radar_parana_'
 ;
 
 function tempo_agora() {
@@ -21,22 +28,36 @@ function tempo_agora() {
 }
 
 function imagem_url(tipo) {
-    return simepar_url + tipo + '.jpeg?' + tempo_agora();
+    return simepar_url + tipo + contador + '.jpeg?' + tempo_agora();
 }
 
 function modelo_url(tipo) {
-    return simepar_modelos_url + tipo + '.png?' + tempo_agora();
+    return simepar_modelos_url + tipo + contador + '.png?' + tempo_agora();
 }
 
 function evento_click(url, tipo) {
-    // define vazia para o fundo de 'carregando' aparecer
-    imagem.setUrl('');
-
-    if (tipo == 'imagem') {
-        imagem.setUrl(imagem_url(url));
-    } else {
-        imagem.setUrl(modelo_url(url));
+    // caso tiver alguma alteração no tipo de imagem e sua url
+    if (url) {
+        ultima_url = url;
     }
+    if (tipo) {
+        ultimo_tipo = tipo;
+    }
+
+    // define vazia para o fundo de 'carregando' aparecer
+    imagem_camada.setUrl('');
+
+    // pode ser 'imagem' ou 'modelo
+    if (ultimo_tipo == 'imagem') {
+        imagem_camada.setUrl(imagem_url(ultima_url));
+        limite_do_contador = 8;
+    } else {
+        imagem_camada.setUrl(modelo_url(ultima_url));
+        limite_do_contador = 28;
+    }
+
+    // altera texto do contador
+    contador_dom.innerHTML = contador + "/" + limite_do_contador;
 
     mapa.setZoom(0);
     mapa.fitBounds(limites);
@@ -52,25 +73,17 @@ function inicializa() {
         link_modelo_temperatura = document.getElementById('link_modelo_temperatura'),
 
         // radar_parana_1 to radar_parana_8
-        imagem_radar = 'radar_parana_1',
-
+        imagem_radar = 'radar_parana_',
         // satelite_amsul_1 to satelite_amsul_8
-        imagem_satelite = 'satelite_amsul_1'
-
+        imagem_satelite = 'satelite_amsul_'
         // raios_parana_1 to raios_parana_8
-        imagem_raios = 'raios_parana_1',
-
-        // chuva6h_2 to chuva6h_28
-        modelo_chuva = 'chuva6h_2',
-
+        imagem_raios = 'raios_parana_',
+        // chuva6h_1 to chuva6h_28
+        modelo_chuva = 'chuva6h_',
         // rajada_lc_1 to rajada_lc_28
-        modelo_vento = 'rajada_lc_1',
-
+        modelo_vento = 'rajada_lc_',
         // temperatura_2m_1 to temperatura_2m_28
-        modelo_temperatura = 'temperatura_2m_1',
-
-        simepar_url = 'http://www.simepar.br/riak/pgw-home-products/',
-        simepar_modelos_url = 'http://www.simepar.br/riak/modelos_site/',
+        modelo_temperatura = 'temperatura_2m_',
         
         pagina_radar = 'http://www.simepar.br/prognozweb/simepar/radar_msc',
         pagina_satelite = 'http://www.simepar.br/prognozweb/simepar/satelite_goes',
@@ -83,40 +96,47 @@ function inicializa() {
 
     // Define ações dos links de tipo de conteúdo
     link_radar.addEventListener('click', function() {
+        contador = 8;
         evento_click(imagem_radar, 'imagem');
     });
     
     link_satelite.addEventListener('click', function() {
+        contador = 8;
         evento_click(imagem_satelite, 'imagem');
     });
     
     link_raios.addEventListener('click', function() {
+        contador = 8;
         evento_click(imagem_raios, 'imagem');
     });
 
     link_modelo_precipitacao.addEventListener('click', function() {
+        contador = 1;
         evento_click(modelo_chuva, 'modelo');
     });
 
     link_modelo_vento.addEventListener('click', function() {
+        contador = 1;
         evento_click(modelo_vento, 'modelo');
     });
 
     link_modelo_temperatura.addEventListener('click', function() {
+        contador = 1;
         evento_click(modelo_temperatura, 'modelo');
     });
     
     // inicializa mapa da biblioteca 'leaflet'
     mapa = L.map('mapa', {
         crs: L.CRS.Simple,
-        maxZoom: 3
+        maxZoom: 3,
+        keyboard: false
     });
 
     // adicionar target _blank no link de atribuição para o Leaflet
     mapa.attributionControl.setPrefix('<a href="http://leafletjs.com" target="_blank">Leaflet</a>');
     
     // inicializa o componente imageOverlay no leaflet
-    imagem = L.imageOverlay(
+    imagem_camada = L.imageOverlay(
         imagem_url(imagem_radar),
         limites,
         {
@@ -127,7 +147,7 @@ function inicializa() {
     // adiciona a imagem 'assincronicamente'
     // para a popup abrir mais rapido e aparecer o 'carregando'
     setTimeout(function() {
-        imagem.addTo(mapa);
+        imagem_camada.addTo(mapa);
     }, 200);
 
     // centraliza mapa nos limites do imageOverlay
@@ -136,44 +156,89 @@ function inicializa() {
     // adiciona botões para navegação
     // próximo
     adicionaBotaoAnterior();
+    adicionaContador();
     adicionaBotaoProximo();
     adicionaBotaoPlay();
+
+    adicionaEventosDasTeclas();
+}
+
+function adicionaEventosDasTeclas() {
+    // adicionar eventos as setas
+    document.addEventListener('keyup', function(e) {
+        if (e.key == 'ArrowLeft') {
+            anterior();
+        } else if (e.key == 'ArrowRight') {
+            proximo();
+        } else if (e.key == '-') {
+            mapa.zoomOut();
+        } else if (e.key == '=' || e.key == '+') {
+            mapa.zoomIn();
+        }
+    });
+}
+
+function anterior() {
+    contador--;
+    if (contador < 1) {
+        contador = limite_do_contador;
+    }
+    evento_click();
+}
+
+function proximo() {
+    contador++;
+    if (contador > limite_do_contador) {
+        contador = 1;
+    }
+
+    evento_click();
 }
 
 function adicionaBotaoAnterior() {
-    adicionaBotao(-75, 40, '&lang;', 'Anterior', function() {
-        console.log(1);
+    adicionaBotao('&lang;', 'Anterior', function() {
+        anterior();
     });
 }
 
 function adicionaBotaoProximo() {
-    adicionaBotao(-119, 72, '&rang;', 'Próxima', function() {
-        console.log(2);
+    adicionaBotao('&rang;', 'Próxima', function() {
+        proximo();
     });
+}
+
+function adicionaContador() {
+    adicionaBotao('<div id="contador">8/8</div>', 'Contador');
+    contador_dom = document.getElementById('contador');
 }
 
 function adicionaBotaoPlay() {
-    adicionaBotao(-163, 104, '&rtrif;', 'Animação', function() {
-        console.log(3);
+    adicionaBotao('&rtrif;', 'Animação', function() {
+        
     });
 }
 
-function adicionaBotao(top, left, html, title, callback) {
+function adicionaBotao(html, title, callback) {
     var CustomControl = L.Control.extend({
         options: {
             position: 'topleft'
         },
-        onAdd: function (map) {
-            var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        onAdd: function() {
+
+            var classes = ['leaflet-bar', 'leaflet-control', 'leaflet-control-custom'];
+            if (title == 'Contador') {
+                classes.push('contador');
+            }
+            var container = L.DomUtil.create('div', classes.join(' '));
+
             L.DomEvent.disableClickPropagation(container);
 
             container.innerHTML = '<a href="#" role="button" title="' + title + '">' + html + '</a>';
 
-            container.style.left = left + 'px';
-            container.style.top = top + 'px';
-
-            container.onclick = function(event) {
-                return callback();
+            if (callback) {
+                container.onclick = function(event) {
+                    return callback();
+                }
             }
             return container;
         }
