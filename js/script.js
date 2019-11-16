@@ -47,7 +47,7 @@ function evento_click(em_branco, url, tipo) {
 
     if (em_branco) {
         paraAnimacao();
-        
+
         // define vazia para o fundo de 'carregando' aparecer
         imagem_camada.setUrl('');
     }
@@ -183,17 +183,8 @@ function adicionaEventosDasTeclas() {
     });
 }
 
-// na verdade aumenta o diminui (anterior ou proximo)
-// dependendo do tipo de conteudo (ultimo_tipo == 'imagem')
-function anterior() {
-
-    if (ultimo_tipo == 'imagem') {
-        contador++;
-    } else {
-        contador--;
-    }
-    
-
+// acoes dos extremos do contator 'contador' (carrossel)
+function verificaInicioEFim() {
     if (contador < 1) {
         contador = limite_do_contador;
     }
@@ -201,6 +192,18 @@ function anterior() {
     if (contador > limite_do_contador) {
         contador = 1;
     }
+}
+
+// na verdade aumenta o diminui (anterior ou proximo)
+// dependendo do tipo de conteudo (ultimo_tipo == 'imagem')
+function anterior() {
+    if (ultimo_tipo == 'imagem') {
+        contador++;
+    } else {
+        contador--;
+    }
+    
+    verificaInicioEFim();
 
     evento_click(false);
 }
@@ -208,20 +211,13 @@ function anterior() {
 // na verdade aumenta o diminui (anterior ou proximo)
 // dependendo do tipo de conteudo (ultimo_tipo == 'imagem')
 function proximo() {
-
     if (ultimo_tipo == 'imagem') {
         contador--;
     } else {
         contador++;
     }
 
-    if (contador < 1) {
-        contador = limite_do_contador;
-    }
-
-    if (contador > limite_do_contador) {
-        contador = 1;
-    }
+    verificaInicioEFim();
 
     evento_click(false);
 }
