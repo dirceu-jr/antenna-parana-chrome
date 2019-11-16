@@ -43,7 +43,8 @@ Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
 - [x] Navegação Satélite
 - [x] Navegação Raios
 - [x] Navegação Modelos Numéricos
-- [ ] Animação Radar
-- [ ] Animação Satélite
-- [ ] Animação Modelos Numéricos
+- [x] Animação Radar
+- [x] Animação Satélite
+- [x] Animação Modelos Numéricos
+- [ ] Muda sentido da navegação/animação das imagens
 - [ ] Reutilizar para Android Auto

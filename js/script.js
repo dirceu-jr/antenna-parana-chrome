@@ -20,7 +20,8 @@ var
     simepar_url = 'http://www.simepar.br/riak/pgw-home-products/',
     simepar_modelos_url = 'http://www.simepar.br/riak/modelos_site/',
     ultimo_tipo = 'imagem',
-    ultima_url = 'radar_parana_'
+    ultima_url = 'radar_parana_',
+    animacao_intervalo
 ;
 
 function tempo_agora() {
@@ -216,7 +217,20 @@ function adicionaContador() {
 
 function adicionaBotaoPlay() {
     adicionaBotao('&rtrif;', 'Animação', function() {
-        
+        var
+            botao = document.getElementById('animacao'),
+            botao_filho = botao.childNodes[0]
+        ;
+
+        if (botao_filho.innerHTML == '▸') {
+            animacao_intervalo = setInterval(function() {
+                proximo();
+            }, 800);
+            botao_filho.innerHTML = '&#9632;';
+        } else {
+            clearInterval(animacao_intervalo);
+            botao_filho.innerHTML = '&rtrif;';
+        }
     });
 }
 
@@ -232,6 +246,10 @@ function adicionaBotao(html, title, callback) {
                 classes.push('contador');
             }
             var container = L.DomUtil.create('div', classes.join(' '));
+
+            if (title == 'Animação') {
+                container.id = 'animacao';
+            }
 
             L.DomEvent.disableClickPropagation(container);
 
