@@ -14,7 +14,7 @@ var
     imagem_camada,
     mapa,
     limites = [[0,0], [413, 780]],
-    contador = 8,
+    contador = 1,
     limite_do_contador = 8,
     contador_dom,
     simepar_url = 'http://www.simepar.br/riak/pgw-home-products/',
@@ -99,17 +99,17 @@ function inicializa() {
 
     // Define ações dos links de tipo de conteúdo
     link_radar.addEventListener('click', function() {
-        contador = 8;
+        contador = 1;
         evento_click(true, imagem_radar, 'imagem');
     });
     
     link_satelite.addEventListener('click', function() {
-        contador = 8;
+        contador = 1;
         evento_click(true, imagem_satelite, 'imagem');
     });
     
     link_raios.addEventListener('click', function() {
-        contador = 8;
+        contador = 1;
         evento_click(true, imagem_raios, 'imagem');
     });
 
@@ -237,7 +237,7 @@ function adicionaBotaoProximo() {
 }
 
 function adicionaContador() {
-    adicionaBotao('<div id="contador">8/8</div>', 'Contador');
+    adicionaBotao('<div id="contador">1/8</div>', 'Contador');
     contador_dom = document.getElementById('contador');
 }
 
