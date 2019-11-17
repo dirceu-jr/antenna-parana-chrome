@@ -32,7 +32,3 @@ Dados: <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológ
 Ícones: <a href="https://erikflowers.github.io/weather-icons/" target="_blank">Weather Icons</a>
 
 Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
-
-# A fazer
-
-- [ ] Ajustar tamanho da viewport no Win10
