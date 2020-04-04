@@ -52,13 +52,16 @@ function evento_click(em_branco, url, tipo) {
         imagem_camada.setUrl('');
     }
 
-    // pode ser 'imagem' ou 'modelo
+    // pode ser 'imagem', 'modelo' ou 'sol_e_lua'
     if (ultimo_tipo == 'imagem') {
         imagem_camada.setUrl(imagem_url(ultima_url));
         limite_do_contador = 8;
-    } else {
+    } else if (ultimo_tipo == 'modelo') {
         imagem_camada.setUrl(modelo_url(ultima_url));
         limite_do_contador = 28;
+    } else {
+        imagem_camada.setUrl(ultima_url);
+        limite_do_contador = 1;
     }
 
     // altera texto do contador
@@ -76,6 +79,7 @@ function inicializa() {
         link_modelo_precipitacao = document.getElementById('link_modelo_precipitacao'),
         link_modelo_vento = document.getElementById('link_modelo_vento'),
         link_modelo_temperatura = document.getElementById('link_modelo_temperatura'),
+        link_sol_e_lua = document.getElementById('link_sol_e_lua'),
 
         // radar_parana_1 to radar_parana_8
         imagem_radar = 'radar_parana_',
@@ -89,7 +93,9 @@ function inicializa() {
         modelo_vento = 'rajada_lc_',
         // temperatura_2m_1 to temperatura_2m_28
         modelo_temperatura = 'temperatura_2m_',
-        
+        // https://www.timeanddate.com/scripts/sunmap.php?iso=20200404T1612
+        sol_e_lua = 'https://www.timeanddate.com/scripts/sunmap.php',
+
         pagina_radar = 'http://www.simepar.br/prognozweb/simepar/radar_msc',
         pagina_satelite = 'http://www.simepar.br/prognozweb/simepar/satelite_goes',
         pagina_raios = 'http://www.simepar.br/prognozweb/simepar/raios_simepar',
@@ -129,6 +135,11 @@ function inicializa() {
         contador = 1;
         evento_click(true, modelo_temperatura, 'modelo');
     });
+
+    link_sol_e_lua.addEventListener('click', function() {
+        contador = 1;
+        evento_click(true, sol_e_lua, 'sol_e_lua');
+    });
     
     // inicializa mapa da biblioteca 'leaflet'
     mapa = L.map('mapa', {
@@ -145,7 +156,8 @@ function inicializa() {
         imagem_url(imagem_radar),
         limites,
         {
-            attribution: '<a target="_blank" href="http://www.simepar.br/">SIMEPAR<\/a>'
+            attribution: '<a target="_blank" href="http://www.simepar.br/">SIMEPAR<\/a> ' +
+                '| <a target="_blank" href="https://www.timeanddate.com/worldclock/sunearth.html">Time And Date<\/a>'
         }
     );
 
