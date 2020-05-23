@@ -17,10 +17,14 @@ var
     contador = 1,
     limite_do_contador = 8,
     contador_dom,
-    simepar_url = 'http://www.simepar.br/riak/pgw-home-products/',
+    simepar_url_old = 'http://www.simepar.br/riak/pgw-home-products/',
+    simepar_url = 'http://www.simepar.br/riak/',
     simepar_modelos_url = 'http://www.simepar.br/riak/modelos_site/',
     ultimo_tipo = 'imagem',
-    ultima_url = 'radar_parana_',
+
+    // ultima_url = 'radar_parana_',
+    ultima_url = 'pgw-radar/product',
+
     animacao_intervalo
 ;
 
@@ -82,17 +86,24 @@ function inicializa() {
         link_sol_e_lua = document.getElementById('link_sol_e_lua'),
 
         // radar_parana_1 to radar_parana_8
-        imagem_radar = 'radar_parana_',
+        imagem_radar_old = 'radar_parana_',
+        imagem_radar = 'pgw-radar/product',
+
         // satelite_amsul_1 to satelite_amsul_8
-        imagem_satelite = 'satelite_amsul_'
+        imagem_satelite_old = 'satelite_amsul_'
+        imagem_satelite = 'pgw-satelite/product',
+
         // raios_parana_1 to raios_parana_8
-        imagem_raios = 'raios_parana_',
+        imagem_raios_old = 'raios_parana_',
+        imagem_raios = 'pgw-raios/product',
+        
         // chuva6h_1 to chuva6h_28
         modelo_chuva = 'chuva6h_',
         // rajada_lc_1 to rajada_lc_28
         modelo_vento = 'rajada_lc_',
         // temperatura_2m_1 to temperatura_2m_28
         modelo_temperatura = 'temperatura_2m_',
+        
         // https://www.timeanddate.com/scripts/sunmap.php?iso=20200404T1612
         sol_e_lua = 'https://www.timeanddate.com/scripts/sunmap.php',
 
