@@ -19,12 +19,6 @@ Não tenho certeza quanto a autorização de acesso aos dados fora do domínio d
 
 ![Captura de tela](https://github.com/dirceup/meteorologia-parana-chrome/blob/master/captura-de-tela.gif)
 
-# Instale
-
-<a href="https://github.com/dirceup/meteorologia-parana-chrome/blob/master/meteorologia-parana-chrome.crx" target="_blank">Baixar</a>
-
-Depois de baixar, arraste o arquivo "meteorologia-parana-chrome.crx" para o Google Chrome e aceite a notificação que aparecer na tela.
-
 # Créditos
 
 Dados: <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>
