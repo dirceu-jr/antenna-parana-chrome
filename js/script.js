@@ -25,7 +25,9 @@ var
     // ultima_url = 'radar_parana_',
     ultima_url = 'pgw-radar/product',
 
-    animacao_intervalo
+    animacao_intervalo,
+
+    carregando
 ;
 
 function tempo_agora() {
@@ -54,6 +56,8 @@ function evento_click(em_branco, url, tipo) {
 
         // define vazia para o fundo de 'carregando' aparecer
         imagem_camada.setUrl('');
+
+        carregando.innerHTML = 'Carregando...';
     }
 
     // pode ser 'imagem', 'modelo' ou 'sol_e_lua'
@@ -113,6 +117,8 @@ function inicializa() {
         pagina_modelos = 'http://www.simepar.br/prognozweb/simepar/modelos_numericos'
     ;
 
+    carregando = document.getElementById('carregando');
+
     // manda fazer requisição da condições
     xhrCondicoes();
 
@@ -171,6 +177,10 @@ function inicializa() {
                 '| <a target="_blank" href="https://www.timeanddate.com/worldclock/sunearth.html">Time And Date<\/a>'
         }
     );
+
+    imagem_camada.addEventListener('load', function() {
+       carregando.innerHTML = '';
+    });
 
     // adiciona a imagem 'assincronicamente'
     // para a popup abrir mais rapido e aparecer o 'carregando'
