@@ -13,10 +13,12 @@ var
     ],
     imagem_camada,
     mapa,
+    mapa_dom,
     limites = [[0,0], [413, 780]],
     contador = 1,
     limite_do_contador = 8,
     contador_dom,
+    frame_dom,
     simepar_url_old = 'http://www.simepar.br/riak/pgw-home-products/',
     simepar_url = 'http://www.simepar.br/riak/',
     simepar_modelos_url = 'http://www.simepar.br/riak/modelos_site/',
@@ -25,9 +27,7 @@ var
     // ultima_url = 'radar_parana_',
     ultima_url = 'pgw-radar/product',
 
-    animacao_intervalo,
-
-    carregando
+    animacao_intervalo
 ;
 
 function tempo_agora() {
@@ -59,19 +59,26 @@ function evento_click(em_branco, url, tipo) {
         // define vazia para o fundo de 'carregando' aparecer
         imagem_camada.setUrl('');
 
-        carregando.innerHTML = 'Carregando...';
+        document.getElementById('carregando').innerHTML = 'Carregando...';
+        mapa_dom.style.display = 'block';
+        frame_dom.style.display = 'none';
     }
 
-    // pode ser 'imagem', 'modelo' ou 'sol_e_lua'
+    // pode ser 'imagem', 'modelo', 'sol_e_lua' ou 'flights'
     if (ultimo_tipo == 'imagem') {
         imagem_camada.setUrl(imagem_url(ultima_url));
         limite_do_contador = 8;
     } else if (ultimo_tipo == 'modelo') {
         imagem_camada.setUrl(modelo_url(ultima_url));
         limite_do_contador = 28;
-    } else {
+    } else if (ultimo_tipo == 'sol_e_lua') {
         imagem_camada.setUrl(ultima_url);
         limite_do_contador = 1;
+    } else if (ultimo_tipo == 'flights') {
+        mapa_dom.style.display = 'none';
+
+        frame_dom.style.display = 'block';
+        frame_dom.src = 'https://www.flightradar24.com/simple?lat=-24.7574861&lon=-51.7596274&z=8#';
     }
 
     // altera texto do contador
@@ -90,6 +97,7 @@ function inicializa() {
         link_modelo_vento = document.getElementById('link_modelo_vento'),
         link_modelo_temperatura = document.getElementById('link_modelo_temperatura'),
         link_sol_e_lua = document.getElementById('link_sol_e_lua'),
+        link_flights = document.getElementById('link_flights'),
 
         // radar_parana_1 to radar_parana_8
         imagem_radar_old = 'radar_parana_',
@@ -112,6 +120,7 @@ function inicializa() {
         
         // https://www.timeanddate.com/scripts/sunmap.php?iso=20200404T1612
         sol_e_lua = 'https://www.timeanddate.com/scripts/sunmap.php',
+        flights = 'https://www.flightradar24.com/',
 
         pagina_radar = 'http://www.simepar.br/prognozweb/simepar/radar_msc',
         pagina_satelite = 'http://www.simepar.br/prognozweb/simepar/satelite_goes',
@@ -119,7 +128,8 @@ function inicializa() {
         pagina_modelos = 'http://www.simepar.br/prognozweb/simepar/modelos_numericos'
     ;
 
-    carregando = document.getElementById('carregando');
+    mapa_dom = document.getElementById('mapa');
+    frame_dom = document.getElementById('frame');
 
     // manda fazer requisição da condições
     xhrCondicoes();
@@ -152,6 +162,10 @@ function inicializa() {
     link_sol_e_lua.addEventListener('click', function() {
         evento_click(true, sol_e_lua, 'sol_e_lua');
     });
+
+    link_flights.addEventListener('click', function() {
+        evento_click(true, flights, 'flights');
+    });
     
     // inicializa mapa da biblioteca 'leaflet'
     mapa = L.map('mapa', {
@@ -174,7 +188,7 @@ function inicializa() {
     );
 
     imagem_camada.addEventListener('load', function() {
-       carregando.innerHTML = '';
+        document.getElementById('carregando').innerHTML = '';
     });
 
     // adiciona a imagem 'assincronicamente'
