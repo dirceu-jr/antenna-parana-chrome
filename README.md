@@ -18,8 +18,6 @@ Dados do <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorol�
 
 # Créditos
 
-Dados: <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>
-
 Ícones: <a href="https://erikflowers.github.io/weather-icons/" target="_blank">Weather Icons</a>
 
 Mapa: <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
