@@ -52,6 +52,8 @@ function evento_click(em_branco, url, tipo) {
     }
 
     if (em_branco) {
+        contador = 1;
+
         paraAnimacao();
 
         // define vazia para o fundo de 'carregando' aparecer
@@ -124,37 +126,30 @@ function inicializa() {
 
     // Define ações dos links de tipo de conteúdo
     link_radar.addEventListener('click', function() {
-        contador = 1;
         evento_click(true, imagem_radar, 'imagem');
     });
     
     link_satelite.addEventListener('click', function() {
-        contador = 1;
         evento_click(true, imagem_satelite, 'imagem');
     });
     
     link_raios.addEventListener('click', function() {
-        contador = 1;
         evento_click(true, imagem_raios, 'imagem');
     });
 
     link_modelo_precipitacao.addEventListener('click', function() {
-        contador = 1;
         evento_click(true, modelo_chuva, 'modelo');
     });
 
     link_modelo_vento.addEventListener('click', function() {
-        contador = 1;
         evento_click(true, modelo_vento, 'modelo');
     });
 
     link_modelo_temperatura.addEventListener('click', function() {
-        contador = 1;
         evento_click(true, modelo_temperatura, 'modelo');
     });
 
     link_sol_e_lua.addEventListener('click', function() {
-        contador = 1;
         evento_click(true, sol_e_lua, 'sol_e_lua');
     });
     
