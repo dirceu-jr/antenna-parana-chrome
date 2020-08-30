@@ -1,6 +1,6 @@
-# Atalho para Informações Meteorológicas do Paraná :umbrella: :earth_americas:
+# :satellite: :earth_americas:
 
-Extensão para o navegador Google Chrome com informações metereológicas do Paraná.
+Atalho em formato de extensão para o navegador Google Chrome para Informações Meteorológicas do Paraná, Mapa Mundial do Dia e Noite e FlightRadar24.
 
 Previsão da semana, radar (precipitação), satélite, raios, modelos numéricos (precipitação, vento e temperatura).
 
@@ -10,10 +10,7 @@ Radares: Teixeira Soares, Cascavel e Curitiba.
 
 Satélite meteorológico: <a href="https://pt.wikipedia.org/wiki/GOES_16" target="_blank">GOES-16</a>.
 
-Dados do <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>
-
-### Observação:
-Não tenho certeza quanto a autorização de acesso aos dados fora do domínio do simepar.br. Então não vou publicar a extensão na Chrome Web Store.
+Dados do <a href="http://simepar.br" target="_blank">SIMEPAR - Sistema Meteorológico do Paraná</a>, <a href="https://www.timeanddate.com/worldclock/sunearth.html" target="_blank">Time And Date</a> e <a href="https://www.flightradar24.com/" target="_blank">FlightRadar24</a>.
 
 # Captura de tela
 
