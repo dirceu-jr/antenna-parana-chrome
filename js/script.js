@@ -78,7 +78,7 @@ function evento_click(em_branco, url, tipo) {
         mapa_dom.style.display = 'none';
 
         frame_dom.style.display = 'block';
-        frame_dom.src = 'https://www.flightradar24.com/simple?lat=-24.7574861&lon=-51.7596274&z=8#';
+        frame_dom.src = 'https://www.flightradar24.com/simple?lat=-24.7574861&lon=-51.7596274&z=7#';
     }
 
     // altera texto do contador
